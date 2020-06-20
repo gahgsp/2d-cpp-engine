@@ -23,13 +23,13 @@ private:
     bool isRunning;
     int ticksLastFrame;
     SDL_Window *window;
-
 public:
     Game();
     ~Game();
     static SDL_Renderer *renderer;
     static AssetManager* assetManager;
     static SDL_Event event;
+    static SDL_Rect camera;
     bool IsRunning() const;
     void Initialize(int width, int height);
     void ProcessInput();
@@ -37,6 +37,7 @@ public:
     void Render();
     void Destroy();
     void LoadLevel(int levelIndex);
+    void HandleCameraMovement();
 };
 
 
