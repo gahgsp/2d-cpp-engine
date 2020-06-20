@@ -2,6 +2,8 @@
 // Created by Kelvin on 20/06/2020.
 //
 
+#include <iostream>
+
 #include "TextureManager.h"
 
 SDL_Texture* TextureManager::LoadTexture(const char *fileName) {

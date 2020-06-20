@@ -5,11 +5,11 @@
 #ifndef ENGINE2D_SPRITECOMPONENT_H
 #define ENGINE2D_SPRITECOMPONENT_H
 
-#include "../Component.h"
+#include "../src/Component.h"
 #include "TransformComponent.h"
 
-#include "../TextureManager.h"
-#include "../AssetManager.h"
+#include "../src/TextureManager.h"
+#include "../src/AssetManager.h"
 
 #include "../include/SDL2/SDL.h"
 

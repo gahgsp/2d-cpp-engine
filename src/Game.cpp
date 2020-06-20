@@ -10,10 +10,10 @@
 #include "EntityManager.h"
 #include "Entity.h"
 
-#include "lib/glm/glm.hpp"
+#include "../lib/glm/glm.hpp"
 
-#include "components/TransformComponent.h"
-#include "components/SpriteComponent.h"
+#include "../components/TransformComponent.h"
+#include "../components/SpriteComponent.h"
 
 EntityManager manager;
 AssetManager* Game::assetManager = new AssetManager(&manager);
@@ -56,7 +56,7 @@ void Game::Initialize(int width, int height) {
 
 void Game::LoadLevel(int levelIndex) {
     // Start including new assets to the AssetManager list.
-    std::string textureFilePath = "FULL_PATH_TO_TEXTURE";
+    std::string textureFilePath = "../assets/images/tank-big-right.png";
     assetManager->AddTexture("Tank-Image", textureFilePath.c_str());
 
     // Start including entities and also its components.

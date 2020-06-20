@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "Constants.h"
-#include "Game.h"
+#include "src/Constants.h"
+#include "src/Game.h"
 
 using namespace std;
 

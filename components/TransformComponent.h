@@ -5,8 +5,8 @@
 #ifndef ENGINE2D_TRANSFORMCOMPONENT_H
 #define ENGINE2D_TRANSFORMCOMPONENT_H
 
-#include "../Game.h"
-#include "../EntityManager.h"
+#include "../src/Game.h"
+#include "../src/EntityManager.h"
 #include "../lib/glm/glm.hpp"
 
 #include "../include/SDL2/SDL.h"
