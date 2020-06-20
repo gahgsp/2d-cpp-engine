@@ -10,6 +10,7 @@
 
 #include "../src/TextureManager.h"
 #include "../src/AssetManager.h"
+#include "../src/Animation.h"
 
 #include "../include/SDL2/SDL.h"
 
@@ -19,10 +20,53 @@ private:
     SDL_Texture* texture;
     SDL_Rect sourceRectangle;
     SDL_Rect destinationRectangle;
+    bool isAnimated;
+    int numberOfFrames;
+    int animationSpeed;
+    bool isFixed; // Means that the position won't be affected by the camera movement.
+    std::map<std::string, Animation> animations;
+    std::string currentAnimationName;
+    unsigned int currentAnimationIndex = 0;
 public:
     SDL_RendererFlip spriteFlip = SDL_FLIP_NONE;
-    SpriteComponent(const char* filePath) {
-        SetTexture(filePath);
+    SpriteComponent(std::string assetTextureName) {
+        isAnimated = false;
+        isFixed = false;
+        SetTexture(assetTextureName);
+    }
+    SpriteComponent(std::string assetTextureName, int numberOfFrames, int animationSpeed, bool hasDirections, bool isFixed) {
+        this->isAnimated = true;
+        this->numberOfFrames = numberOfFrames;
+        this->animationSpeed = animationSpeed;
+        this->isFixed = isFixed;
+
+        if (hasDirections) {
+            Animation downAnimation = Animation(0, numberOfFrames, animationSpeed);
+            Animation rightAnimation = Animation(1, numberOfFrames, animationSpeed);
+            Animation leftAnimation = Animation(2, numberOfFrames, animationSpeed);
+            Animation upAnimation = Animation(3, numberOfFrames, animationSpeed);
+
+            animations.emplace("DownAnimation", downAnimation);
+            animations.emplace("RightAnimation", rightAnimation);
+            animations.emplace("LeftAnimation", leftAnimation);
+            animations.emplace("UpAnimation", upAnimation);
+
+            this->currentAnimationIndex = 0;
+            this->currentAnimationName = "DownAnimation";
+        } else {
+            Animation singleAnimation = Animation(0, numberOfFrames, animationSpeed);
+            animations.emplace("SingleAnimation", singleAnimation);
+            this->currentAnimationIndex = 0;
+            this->currentAnimationName = "SingleAnimation";
+        }
+        PlayAnimation(this->currentAnimationName);
+        SetTexture(assetTextureName);
+    }
+    void PlayAnimation(std::string animationName) {
+        numberOfFrames = animations[animationName].numberOfFrames;
+        currentAnimationIndex = animations[animationName].index;
+        animationSpeed = animations[animationName].animationSpeed;
+        currentAnimationName = animationName;
     }
     void SetTexture(std::string assetTextureName) {
         texture = Game::assetManager->GetTexture(assetTextureName);
@@ -35,8 +79,13 @@ public:
         sourceRectangle.h = transform->height;
     }
     void Update(float deltaTime) override {
-        destinationRectangle.x = (int) transform->position.x;
-        destinationRectangle.y = (int) transform->position.y;
+        if (isAnimated) {
+            sourceRectangle.x = sourceRectangle.w * static_cast<int>((SDL_GetTicks() / animationSpeed) % numberOfFrames);
+        }
+        sourceRectangle.y = currentAnimationIndex * transform->height;
+
+        destinationRectangle.x = static_cast<int>(transform->position.x);
+        destinationRectangle.y = static_cast<int>(transform->position.y);
         destinationRectangle.w = transform->width * transform->scale;
         destinationRectangle.h = transform->height * transform->scale;
     }
