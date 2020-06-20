@@ -15,11 +15,13 @@
 #include "../components/TransformComponent.h"
 #include "../components/SpriteComponent.h"
 #include "../components/KeyboardComponent.h"
+#include "Map.h"
 
 EntityManager manager;
 AssetManager* Game::assetManager = new AssetManager(&manager);
 SDL_Renderer* Game::renderer;
 SDL_Event Game::event;
+Map* map;
 
 Game::Game() {
     this->isRunning = false;
@@ -61,6 +63,10 @@ void Game::LoadLevel(int levelIndex) {
     assetManager->AddTexture("Tank-Image", std::string("../assets/images/tank-big-right.png").c_str());
     assetManager->AddTexture("Chopper-Image", std::string("../assets/images/chopper-spritesheet.png").c_str());
     assetManager->AddTexture("Radar-Image", std::string("../assets/images/radar.png").c_str());
+    assetManager->AddTexture("Jungle-Tilemap", std::string("../assets/tilemaps/jungle.png").c_str());
+
+    map = new Map("Jungle-Tilemap", 1, 32);
+    map->LoadMap("../assets/tilemaps/jungle.map", 25, 20);
 
     // Start including entities and also its components.
     Entity& chopperEntity(manager.AddEntity("Chopper"));
