@@ -5,10 +5,11 @@
 #ifndef ENGINE2D_TRANSFORMCOMPONENT_H
 #define ENGINE2D_TRANSFORMCOMPONENT_H
 
-#include <SDL2/SDL.h>
 #include "../Game.h"
 #include "../EntityManager.h"
 #include "../lib/glm/glm.hpp"
+
+#include "../include/SDL2/SDL.h"
 
 class TransformComponent: public Component {
 public:
@@ -32,17 +33,7 @@ public:
         position.x += velocity.x * deltaTime;
         position.y += velocity.y * deltaTime;
     }
-    void Render() override {
-        SDL_Rect transformRectangle = {
-                (int) position.x,
-                (int) position.y,
-                width,
-                height
-        };
-        SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
-        SDL_RenderFillRect(Game::renderer, &transformRectangle);
-    }
-
+    void Render() override {}
 };
 
 

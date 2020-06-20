@@ -14,6 +14,9 @@
 #include "Entity.h"
 #include "Component.h"
 #include "EntityManager.h"
+#include "AssetManager.h"
+
+class AssetManager;
 
 class Game {
 private:
@@ -25,6 +28,7 @@ public:
     Game();
     ~Game();
     static SDL_Renderer *renderer;
+    static AssetManager* assetManager;
     bool IsRunning() const;
     void Initialize(int width, int height);
     void ProcessInput();
