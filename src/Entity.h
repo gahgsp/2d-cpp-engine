@@ -44,6 +44,13 @@ public:
     T* GetComponent() {
         return static_cast<T*>(componentsTypes[&typeid(T)]);
     }
+
+    template <typename T>
+    bool HasComponent() const {
+        return componentsTypes.count(&typeid(T)) > 0;
+    }
+
+    void ListAllComponents() const;
 };
 
 

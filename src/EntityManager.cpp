@@ -2,6 +2,8 @@
 // Created by Kelvin on 19/06/2020.
 //
 
+#include <iostream>
+
 #include "EntityManager.h"
 
 void EntityManager::Clear() {
@@ -38,4 +40,13 @@ std::vector<Entity*> EntityManager::GetEntities() const {
 
 unsigned int EntityManager::GetEntityCount() const {
     return entities.size();
+}
+
+void EntityManager::ListAllEntities() const {
+    unsigned int i = 0;
+    for (auto& entity : entities) {
+        std::cout << "Entity[" << i << "]: " << entity->name << std::endl;
+        entity->ListAllComponents();
+        i++;
+    }
 }

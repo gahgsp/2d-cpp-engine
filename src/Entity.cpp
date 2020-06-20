@@ -2,6 +2,8 @@
 // Created by Kelvin on 19/06/2020.
 //
 
+#include <iostream>
+
 #include "Entity.h"
 #include "EntityManager.h"
 
@@ -31,4 +33,10 @@ void Entity::Destroy() {
 
 bool Entity::IsActive() const {
     return isActive;
+}
+
+void Entity::ListAllComponents() const {
+    for (auto component : componentsTypes) {
+        std::cout << "Component<" << component.first->name() << ">" << std::endl;
+    }
 }
