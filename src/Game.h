@@ -29,6 +29,7 @@ public:
     ~Game();
     static SDL_Renderer *renderer;
     static AssetManager* assetManager;
+    static SDL_Event event;
     bool IsRunning() const;
     void Initialize(int width, int height);
     void ProcessInput();
