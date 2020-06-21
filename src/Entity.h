@@ -50,7 +50,7 @@ public:
 
     template <typename T>
     bool HasComponent() const {
-        return componentsTypes.count(&typeid(T)) > 0;
+        return componentsTypes.count(&typeid(T));
     }
 
     void ListAllComponents() const;

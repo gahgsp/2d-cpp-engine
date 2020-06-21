@@ -38,6 +38,7 @@ public:
     void Destroy();
     void LoadLevel(int levelIndex);
     void HandleCameraMovement();
+    void CheckCollisions();
 };
 
 

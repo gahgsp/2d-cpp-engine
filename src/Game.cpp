@@ -16,6 +16,7 @@
 #include "../components/SpriteComponent.h"
 #include "../components/KeyboardComponent.h"
 #include "Map.h"
+#include "../components/ColliderComponent.h"
 
 EntityManager manager;
 AssetManager* Game::assetManager = new AssetManager(&manager);
@@ -75,10 +76,12 @@ void Game::LoadLevel(int levelIndex) {
     playerEntity.AddComponent<TransformComponent>(240, 100, 0, 0, 32, 32, 1);
     playerEntity.AddComponent<SpriteComponent>("Chopper-Image", 2, 90, true, false);
     playerEntity.AddComponent<KeyboardComponent>("up", "right", "down", "left", "space");
+    playerEntity.AddComponent<ColliderComponent>("Player", 240, 100, 32, 32);
 
     Entity& tankEntity(manager.AddEntity("Tank", ENEMY_LAYER));
     tankEntity.AddComponent<TransformComponent>(0, 0, 20, 30, 32, 32, 1);
     tankEntity.AddComponent<SpriteComponent>("Tank-Image");
+    tankEntity.AddComponent<ColliderComponent>("Enemy", 0, 0, 32, 32);
 
     Entity& radarEntity(manager.AddEntity("Radar", UI_LAYER));
     radarEntity.AddComponent<TransformComponent>(720, 15, 0, 0, 64, 64, 1);
@@ -124,6 +127,7 @@ void Game::Update() {
     manager.Update(deltaTime);
 
     HandleCameraMovement();
+    CheckCollisions();
 }
 
 void Game::Render() {
@@ -139,12 +143,6 @@ void Game::Render() {
     SDL_RenderPresent(renderer);
 }
 
-void Game::Destroy() {
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-}
-
 void Game::HandleCameraMovement() {
     TransformComponent* mainPlayerTransform = playerEntity.GetComponent<TransformComponent>();
     camera.x = mainPlayerTransform->position.x - (WINDOW_WIDTH / 2);
@@ -155,4 +153,18 @@ void Game::HandleCameraMovement() {
     camera.y = camera.y < 0 ? 0 : camera.y;
     camera.x > camera.w ? camera.w : camera.x;
     camera.y > camera.h ? camera.h : camera.y;
+}
+
+void Game::CheckCollisions() {
+    std::string collisionTagType = manager.CheckEntityCollisions(playerEntity);
+    if (collisionTagType.compare("Enemy") == 0) {
+        // TODO: Do something when colliding with an Enemy!
+        isRunning = false;
+    }
+}
+
+void Game::Destroy() {
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
 }
