@@ -39,6 +39,7 @@ public:
     void LoadLevel(int levelIndex);
     void HandleCameraMovement();
     void CheckCollisions();
+    void ProcessGameOver();
 };
 
 
