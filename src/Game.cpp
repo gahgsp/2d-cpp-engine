@@ -68,6 +68,7 @@ void Game::LoadLevel(int levelIndex) {
     assetManager->AddTexture("Chopper-Image", std::string("../assets/images/chopper-spritesheet.png").c_str());
     assetManager->AddTexture("Radar-Image", std::string("../assets/images/radar.png").c_str());
     assetManager->AddTexture("Jungle-Tilemap", std::string("../assets/tilemaps/jungle.png").c_str());
+    assetManager->AddTexture("Collider-Box", std::string("../assets/images/collision-texture.png").c_str());
 
     map = new Map("Jungle-Tilemap", 2, 32);
     map->LoadMap("../assets/tilemaps/jungle.map", 25, 20);
