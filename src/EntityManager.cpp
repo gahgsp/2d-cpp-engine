@@ -19,8 +19,12 @@ bool EntityManager::HasNoEntities() const {
 }
 
 void EntityManager::Update(float deltaTime) {
-    for (auto& entity: entities) {
-        entity->Update(deltaTime);
+    for (int i = 0; i < entities.size(); i++) {
+        if (!entities[i]->IsActive()) {
+            entities.erase(entities.begin() + i);
+        } else {
+            entities[i]->Update(deltaTime);
+        }
     }
 }
 

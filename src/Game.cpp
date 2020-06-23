@@ -18,6 +18,7 @@
 #include "Map.h"
 #include "../components/ColliderComponent.h"
 #include "../components/TextLabelComponent.h"
+#include "../components/ProjectileEmitterComponent.h"
 
 EntityManager manager;
 AssetManager* Game::assetManager = new AssetManager(&manager);
@@ -74,6 +75,7 @@ void Game::LoadLevel(int levelIndex) {
     assetManager->AddTexture("Radar-Image", std::string("../assets/images/radar.png").c_str());
     assetManager->AddTexture("Jungle-Tilemap", std::string("../assets/tilemaps/jungle.png").c_str());
     assetManager->AddTexture("Collider-Box", std::string("../assets/images/collision-texture.png").c_str());
+    assetManager->AddTexture("Enemy-Projectile", std::string("../assets/images/bullet-enemy.png").c_str());
     assetManager->AddFont("Charriot-Font", std::string("../assets/fonts/charriot.ttf").c_str(), 14);
 
     map = new Map("Jungle-Tilemap", 2, 32);
@@ -86,9 +88,15 @@ void Game::LoadLevel(int levelIndex) {
     playerEntity.AddComponent<ColliderComponent>("Player", 240, 100, 32, 32);
 
     Entity& tankEntity(manager.AddEntity("Tank", ENEMY_LAYER));
-    tankEntity.AddComponent<TransformComponent>(0, 0, 20, 30, 32, 32, 1);
+    tankEntity.AddComponent<TransformComponent>(150, 495, 0, 0, 32, 32, 1);
     tankEntity.AddComponent<SpriteComponent>("Tank-Image");
     tankEntity.AddComponent<ColliderComponent>("Enemy", 0, 0, 32, 32);
+
+    Entity& projectEntity(manager.AddEntity("Projectile", PROJECTILE_LAYER));
+    projectEntity.AddComponent<TransformComponent>(150 + 16, 495 + 16, 0, 0, 4, 4, 1);
+    projectEntity.AddComponent<SpriteComponent>("Enemy-Projectile");
+    projectEntity.AddComponent<ColliderComponent>("Projectile", 150 + 16, 495 + 16, 4, 4);
+    projectEntity.AddComponent<ProjectileEmitterComponent>(50, 270, 200, true);
 
     Entity& radarEntity(manager.AddEntity("Radar", UI_LAYER));
     radarEntity.AddComponent<TransformComponent>(720, 15, 0, 0, 64, 64, 1);
@@ -168,6 +176,9 @@ void Game::HandleCameraMovement() {
 void Game::CheckCollisions() {
     CollisionType collisionType = manager.CheckCollisions();
     if (collisionType == PLAYER_ENEMY_COLLISION) {
+        ProcessGameOver();
+    }
+    if (collisionType == PLAYER_PROJECTILE_COLLISION) {
         ProcessGameOver();
     }
     if (collisionType == PLAYER_LEVEL_COMPLETE_COLLISION) {
