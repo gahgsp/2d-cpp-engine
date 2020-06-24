@@ -69,6 +69,15 @@ std::vector<Entity*> EntityManager::GetEntitiesByLayer(LayerType layer) const {
     return entitiesFromLayer;
 }
 
+Entity* EntityManager::GetEntityByName(std::string entityName) const {
+    for (auto& entity: entities) {
+        if (entity->name.compare(entityName) == 0) {
+            return entity;
+        }
+    }
+    return NULL;
+}
+
 CollisionType EntityManager::CheckCollisions() const {
     for (int i = 0; i < entities.size() - 1; i++) {
         auto& thisEntity = entities[i];

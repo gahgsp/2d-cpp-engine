@@ -11,6 +11,8 @@
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_ttf.h"
 
+#include "Lua/sol.hpp"
+
 #include "Entity.h"
 #include "Component.h"
 #include "EntityManager.h"
