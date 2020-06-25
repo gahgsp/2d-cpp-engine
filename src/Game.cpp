@@ -18,6 +18,7 @@
 #include "Map.h"
 #include "../components/ColliderComponent.h"
 #include "../components/ProjectileEmitterComponent.h"
+#include "../components/TextLabelComponent.h"
 
 EntityManager manager;
 AssetManager* Game::assetManager = new AssetManager(&manager);
@@ -221,6 +222,22 @@ void Game::LoadLevel(int levelIndex) {
                         projectileWidth,
                         projectileHeight
                 );
+            }
+
+            // Adding the Label component.
+            sol::optional<sol::table> existsLabelIndexNode = entity["components"]["label"];
+            if (existsLabelIndexNode != sol::nullopt) {
+                newEntity.AddComponent<TextLabelComponent>(
+                        entity["components"]["label"]["position"]["x"],
+                        entity["components"]["label"]["position"]["y"],
+                        entity["components"]["label"]["text"],
+                        entity["components"]["label"]["fontFamily"],
+                        SDL_Color {
+                            .r =  entity["components"]["label"]["color"]["r"],
+                            .g =  entity["components"]["label"]["color"]["g"],
+                            .b =  entity["components"]["label"]["color"]["b"],
+                            .a =  entity["components"]["label"]["color"]["a"]
+                        });
             }
         }
         entityIndex++;

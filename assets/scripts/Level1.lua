@@ -6,7 +6,8 @@ Level1 = {
         [3] = { type="texture", id = "Tank-Image", file = "../assets/images/tank-big-right.png" },
         [4] = { type="texture", id = "Enemy-Projectile", file = "../assets/images/bullet-enemy.png" },
         [5] = { type="texture", id = "Collider-Box", file = "../assets/images/collision-texture.png" },
-        [6] = { type="font", id = "Charriot-Font", file = "../assets/fonts/charriot.ttf", fontSize = 14 }
+        [6] = { type="texture", id = "Radar-Image", file = "../assets/images/radar.png" },
+        [7] = { type="font", id = "Charriot-Font", file = "../assets/fonts/charriot.ttf", fontSize = 14 }
     },
     map = {
         textureAssetId = "Jungle-Day",
@@ -88,6 +89,53 @@ Level1 = {
                     angle = 270,
                     range = 200,
                     shouldLoop = true
+                }
+            }
+        },
+        [2] = {
+            name = "Radar",
+            layer = 5,
+            components = {
+                transform = {
+                    position = {
+                        x = 720,
+                        y = 15
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 64,
+                    height = 64,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Radar-Image",
+                    animated = true,
+                    frameCount = 8,
+                    animationSpeed = 150,
+                    hasDirections = false,
+                    fixed = true
+                }
+            }
+        },
+        [3] = {
+            name = "Level-Name",
+            layer = 5,
+            components = {
+                label = {
+                    position = {
+                        x = 10,
+                        y = 10
+                    },
+                    text = "First Level",
+                    fontFamily = "Charriot-Font",
+                    color = {
+                        r = 255,
+                        g = 255,
+                        b = 255,
+                        a = 255
+                    }
                 }
             }
         }
