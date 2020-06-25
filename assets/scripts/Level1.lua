@@ -5,7 +5,8 @@ Level1 = {
         [2] = { type="texture", id = "Chopper-Image", file = "../assets/images/chopper-spritesheet.png" },
         [3] = { type="texture", id = "Tank-Image", file = "../assets/images/tank-big-right.png" },
         [4] = { type="texture", id = "Enemy-Projectile", file = "../assets/images/bullet-enemy.png" },
-        [5] = { type="font", id = "Charriot-Font", file = "../assets/fonts/charriot.ttf", fontSize = 14 }
+        [5] = { type="texture", id = "Collider-Box", file = "../assets/images/collision-texture.png" },
+        [6] = { type="font", id = "Charriot-Font", file = "../assets/fonts/charriot.ttf", fontSize = 14 }
     },
     map = {
         textureAssetId = "Jungle-Day",
