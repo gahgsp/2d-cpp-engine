@@ -322,12 +322,19 @@ void Game::CheckCollisions() {
         ProcessGameOver();
     }
     if (collisionType == PLAYER_LEVEL_COMPLETE_COLLISION) {
-        LoadLevel(2);
+        ProcessLevelComplete();
     }
 }
 
 void Game::ProcessGameOver() {
     std::cout << "Game Over!" << std::endl;
+    isRunning = false;
+}
+
+void Game::ProcessLevelComplete() {
+    // TODO: Should load next level!
+    // LoadLevel(2);
+    std::cout << "Congratulations! You finished the level!" << std::endl;
     isRunning = false;
 }
 

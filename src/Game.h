@@ -42,6 +42,7 @@ public:
     void HandleCameraMovement();
     void CheckCollisions();
     void ProcessGameOver();
+    void ProcessLevelComplete();
 };
 
 
