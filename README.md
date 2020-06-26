@@ -1,7 +1,7 @@
 # C++ 2D Engine with SDL2 + Lua
 
 ### What is this?
-A 2D engine developed from scratch using courses and tutorials about C++ and SDL2.2D
+A 2D engine developed from scratch using courses and tutorials about C++ and SDL2.
 
 ### Why?
 To get a better grasp on how the games run under the hood and also to learn more in depth C++ and SDL2.
