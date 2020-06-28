@@ -302,6 +302,244 @@ Level1 = {
                     tag = "Level-Complete"
                 }
             }
-        }
+        },
+        [9] = {
+            name = "Enemy-Tank-7",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 920,
+                        y = 180
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Down"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 90,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
+        [10] = {
+            name = "Enemy-Tank-8",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 1300,
+                        y = 220
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Down"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 90,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
+        [11] = {
+            name = "Enemy-Tank-9",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 780,
+                        y = 110
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Right"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 0,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
+        [12] = {
+            name = "Enemy-Tank-10",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 1000,
+                        y = 750
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Right"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 0,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
+        [12] = {
+            name = "Enemy-Tank-11",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 1400,
+                        y = 550
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Down"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 90,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
+        [13] = {
+            name = "Enemy-Tank-11",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 1500,
+                        y = 700
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Left"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 180,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
+        [14] = {
+            name = "Enemy-Tank-11",
+            layer = 2,
+            components = {
+                transform = {
+                    position = {
+                        x = 1500,
+                        y = 870
+                    },
+                    velocity = {
+                        x = 0,
+                        y = 0
+                    },
+                    width = 32,
+                    height = 32,
+                    scale = 1
+                },
+                sprite = {
+                    textureAssetId = "Tank-Image-Left"
+                },
+                collider = {
+                    tag = "Enemy"
+                },
+                projectileEmitter = {
+                    textureAssetId = "Enemy-Projectile",
+                    width = 4,
+                    height = 4,
+                    speed = 200,
+                    angle = 180,
+                    range = 800,
+                    shouldLoop = true
+                }
+            }
+        },
     }
 }
